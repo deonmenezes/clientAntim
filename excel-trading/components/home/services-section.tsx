@@ -6,23 +6,37 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card"
 const services = [
   {
     id: 1,
-    title: "Equipment Rental",
-    description: "Rent high-quality industrial equipment for your short-term projects",
-    image: "/placeholder.svg?height=300&width=300",
+    title: "Industrial Product Supply",
+    description: "-Reliable supply chain for a wide array of mechanical and electrical components.\n-Partnership with top-tier manufacturers and distributors worldwide.",
+    image: "/s1.jpg?height=300&width=300",
     slug: "equipment-rental",
   },
   {
     id: 2,
-    title: "Maintenance & Repair",
-    description: "Professional maintenance and repair services for industrial tools and equipment",
-    image: "/placeholder.svg?height=300&width=300",
+    title: "Custom Sourcing & Procurement",
+    description: "-Specialized sourcing for hard-to-find industrial products.\n-Procurement based on technical specifications, certifications, and project needs.",
+    image: "/s2.jpg?height=300&width=300",
     slug: "maintenance-repair",
   },
   {
     id: 3,
-    title: "Technical Consultation",
-    description: "Expert advice on selecting the right tools and equipment for your specific needs",
-    image: "/placeholder.svg?height=300&width=300",
+    title: "Inventory & Logistics Support",
+    description: "-Managed stock for ongoing projects and maintenance contracts.\n-Local delivery and export coordination with documentation support.",
+    image: "/s3.webp?height=300&width=300",
+    slug: "technical-consultation",
+  },
+  {
+    id: 4,
+    title: "Technical Consultation & Product Matching",
+    description: "-In-depth consultation to match product specifications with your project needs.\n-Engineering support to ensure compatibility and performance.",
+    image: "/s4.png?height=300&width=300",
+    slug: "maintenance-repair",
+  },
+  {
+    id: 5,
+    title: "Equipment Installation Assistance",
+    description: "-Guidance for on-site installation of complex machinery or industrial systems.\n-Coordinating with installation experts as per client's site condition.",
+    image: "/s5.jpg?height=300&width=300",
     slug: "technical-consultation",
   },
 ]
@@ -47,7 +61,12 @@ export default function ServicesSection() {
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <p className="text-gray-600">{service.description.split('\n').map((line, i) => (
+                <span key={i}>
+                {line}
+                {i !== service.description.split('\n').length - 1 && <br />}
+                </span>
+                ))}</p>
               </CardContent>
               <CardFooter className="p-6 pt-0">
                 <Link href={`/services/${service.slug}`} className="w-full">

@@ -7,16 +7,16 @@ import { Badge } from "@/components/ui/badge"
 const featuredProducts = [
   {
     id: 1,
-    name: "Heavy Duty Power Drill",
-    image: "/placeholder.svg?height=300&width=300",
-    category: "Power Tools",
+    name: "Globe Valve",
+    image: "/fp1.webp?height=300&width=300",
+    category: "Mechanical Products",
     slug: "heavy-duty-power-drill",
     isNew: true,
   },
   {
     id: 2,
     name: "Professional Safety Helmet",
-    image: "/placeholder.svg?height=300&width=300",
+    image: "/fp2.webp?height=300&width=300",
     category: "Safety Equipment",
     slug: "professional-safety-helmet",
     isNew: false,
@@ -24,7 +24,7 @@ const featuredProducts = [
   {
     id: 3,
     name: "Precision Measuring Tape",
-    image: "/placeholder.svg?height=300&width=300",
+    image: "/fp3.jpg?height=300&width=300",
     category: "Measuring Tools",
     slug: "precision-measuring-tape",
     isNew: false,
@@ -32,7 +32,7 @@ const featuredProducts = [
   {
     id: 4,
     name: "Industrial Wrench Set",
-    image: "/placeholder.svg?height=300&width=300",
+    image: "/fp4.jpg?height=300&width=300",
     category: "Hand Tools",
     slug: "industrial-wrench-set",
     isNew: true,

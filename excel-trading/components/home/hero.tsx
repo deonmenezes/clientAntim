@@ -7,10 +7,10 @@ export default function Hero() {
     <div className="relative">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/placeholder.svg?height=600&width=1600"
+          src="/heroimg2.jpg?height=600&width=1600"
           alt="Industrial background"
           fill
-          className="object-cover brightness-50"
+          className="object-cover brightness-70"
           priority
         />
       </div>

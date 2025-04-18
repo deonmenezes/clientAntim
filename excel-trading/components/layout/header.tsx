@@ -56,7 +56,7 @@ export default function Header() {
         </Sheet>
 
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <Image src="/placeholder.svg?height=40&width=120" alt="Excel Trading LLC" width={120} height={40} />
+          <Image src="/image.png?height=40&width=120" alt="Excel Trading LLC" width={85} height={40} />
         </Link>
 
         <div className="hidden md:flex items-center space-x-1 text-sm">

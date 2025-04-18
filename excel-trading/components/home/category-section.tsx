@@ -5,20 +5,20 @@ import { Card, CardContent } from "@/components/ui/card"
 const categories = [
   {
     id: 1,
-    name: "Hand Tools",
-    image: "/placeholder.svg?height=300&width=300",
+    name: "Mechanial Products",
+    image: "/Mechanical.jpg?height=300&width=300",
     slug: "hand-tools",
   },
   {
     id: 2,
-    name: "Power Tools",
-    image: "/placeholder.svg?height=300&width=300",
+    name: "Electrical Products",
+    image: "/electrical2.jpg?height=300&width=300",
     slug: "power-tools",
   },
   {
     id: 3,
-    name: "Safety Equipment",
-    image: "/placeholder.svg?height=300&width=300",
+    name: "Industrial General Equipment",
+    image: "/safety.webp?height=300&width=300",
     slug: "safety-equipment",
   },
   {
