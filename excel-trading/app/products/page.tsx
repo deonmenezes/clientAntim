@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
-import ProductGrid from "@/components/products/product-grid"
-import ProductFilter from "@/components/products/product-filter"
+import ProductsClient from "@/components/products/products-client"
 import PageHeader from "@/components/ui/page-header"
 
 export const metadata: Metadata = {
@@ -13,14 +12,8 @@ export default function ProductsPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <PageHeader title="Our Products" description="Browse our extensive range of industrial tools and equipment" />
-
-      <div className="flex flex-col md:flex-row gap-8 mt-8">
-        <div className="w-full md:w-1/4">
-          <ProductFilter />
-        </div>
-        <div className="w-full md:w-3/4">
-          <ProductGrid />
-        </div>
+      <div className="mt-8">
+        <ProductsClient />
       </div>
     </div>
   )
