@@ -12,11 +12,10 @@ export default function ProductFilter() {
   const searchParams = useSearchParams()
 
   const categories = [
-    { id: "hand-tools", name: "Hand Tools" },
-    { id: "power-tools", name: "Power Tools" },
-    { id: "safety-equipment", name: "Safety Equipment" },
-    { id: "measuring-tools", name: "Measuring Tools" },
-    { id: "machinery", name: "Machinery" },
+    { id: "mechanical", name: "Mechanical Components" },
+    { id: "electrical", name: "Electrical Components" },
+    { id: "testing-equipment", name: "Testing Equipment" },
+    { id: "safety-equipment", name: "Safety Equipment" }
   ]
 
   const brands = [
