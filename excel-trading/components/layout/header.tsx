@@ -86,7 +86,7 @@ export default function Header() {
           <div className="flex items-center mr-6">
             <Phone className="h-4 w-4 mr-2 text-red-600" />
             <div>
-              <p className="font-semibold">+971 50 3838194</p>
+              <p className="font-semibold">+971545417801</p>
             </div>
           </div>
 

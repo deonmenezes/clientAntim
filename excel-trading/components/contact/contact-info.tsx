@@ -27,7 +27,7 @@ export default function ContactInfo() {
           </div>
           <div>
             <h3 className="font-semibold mb-1">Phone Number</h3>
-            <p className="text-gray-600">+971 50 3838194</p>
+            <p className="text-gray-600">+971545417801</p>
           </div>
         </div>
 
