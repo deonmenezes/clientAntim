@@ -10,7 +10,7 @@ export default function AboutSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-[500px]">
             <Image
-              src="/image.png?height=400&width=600"
+              src="/clientAntim_logo.png"
               alt="About Excel Trading"
               fill
               className="object-cover rounded-lg"
