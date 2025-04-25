@@ -41,7 +41,7 @@ export default function ProductsClient() {
         <Suspense fallback={<ProductGridSkeleton />}>
           <div className="space-y-12">
             {/* Replace ProductGrid with ProductGrid2 */}
-            <ProductGrid2 />
+            <ProductGrid2 products={undefined} />
           </div>
         </Suspense>
       </div>
