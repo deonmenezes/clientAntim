@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-block mb-6">
               <Image
-                src="/placeholder.svg?height=40&width=120"
+                src="/placeholder.jpg"
                 alt="Excel Trading LLC"
                 width={120}
                 height={40}

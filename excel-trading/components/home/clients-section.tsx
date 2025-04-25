@@ -1,12 +1,12 @@
 import Image from "next/image"
 
 const clients = [
-  { id: 1, name: "Client 1", logo: "/placeholder.svg?height=100&width=200" },
-  { id: 2, name: "Client 2", logo: "/placeholder.svg?height=100&width=200" },
-  { id: 3, name: "Client 3", logo: "/placeholder.svg?height=100&width=200" },
-  { id: 4, name: "Client 4", logo: "/placeholder.svg?height=100&width=200" },
-  { id: 5, name: "Client 5", logo: "/placeholder.svg?height=100&width=200" },
-  { id: 6, name: "Client 6", logo: "/placeholder.svg?height=100&width=200" },
+  { id: 1, name: "Client 1", logo: "/placeholder.jpg" },
+  { id: 2, name: "Client 2", logo: "/placeholder.jpg" },
+  { id: 3, name: "Client 3", logo: "/placeholder.jpg" },
+  { id: 4, name: "Client 4", logo: "/placeholder.jpg" },
+  { id: 5, name: "Client 5", logo: "/placeholder.jpg" },
+  { id: 6, name: "Client 6", logo: "/placeholder.jpg" },
 ]
 
 export default function ClientsSection() {
@@ -27,7 +27,7 @@ export default function ClientsSection() {
               className="flex items-center justify-center p-4 border rounded-lg hover:shadow-md transition-shadow duration-300"
             >
               <Image
-                src={client.logo || "/placeholder.svg"}
+                src={client.logo || "/placeholder.jpg"}
                 alt={client.name}
                 width={150}
                 height={75}

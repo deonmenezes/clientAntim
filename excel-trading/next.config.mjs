@@ -21,6 +21,15 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+    domains: ['localhost'],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   experimental: {
     webpackBuildWorker: true,

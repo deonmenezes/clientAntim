@@ -8,33 +8,33 @@ const featuredProducts = [
   {
     id: 1,
     name: "Globe Valve",
-    image: "/fp1.webp?height=300&width=300",
+    image: "/Globe_Valve.jpg",
     category: "Mechanical Products",
-    slug: "heavy-duty-power-drill",
+    slug: "globe-valve",
     isNew: true,
   },
   {
     id: 2,
     name: "Professional Safety Helmet",
-    image: "/fp2.webp?height=300&width=300",
+    image: "/Helmet+.jpg",
     category: "Safety Equipment",
-    slug: "professional-safety-helmet",
+    slug: "safety-helmet",
     isNew: false,
   },
   {
     id: 3,
-    name: "Precision Measuring Tape",
-    image: "/fp3.jpg?height=300&width=300",
-    category: "Measuring Tools",
-    slug: "precision-measuring-tape",
+    name: "Digital Multimeter",
+    image: "/Multimeter.jpeg",
+    category: "Testing Equipment",
+    slug: "digital-multimeter",
     isNew: false,
   },
   {
     id: 4,
-    name: "Industrial Wrench Set",
-    image: "/fp4.jpg?height=300&width=300",
-    category: "Hand Tools",
-    slug: "industrial-wrench-set",
+    name: "Industrial Power Distribution Box",
+    image: "/Distribution_Panel.webp",
+    category: "Electrical Equipment",
+    slug: "power-distribution-box",
     isNew: true,
   },
 ]
@@ -61,7 +61,7 @@ export default function FeaturedProducts() {
               <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
                 <div className="relative">
                   <div className="relative h-64">
-                    <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-cover" />
+                    <Image src={product.image || "/placeholder.jpg"} alt={product.name} fill className="object-cover" />
                   </div>
                   {product.isNew && <Badge className="absolute top-2 right-2 bg-green-600">New</Badge>}
                 </div>

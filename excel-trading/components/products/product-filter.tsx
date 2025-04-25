@@ -1,116 +1,135 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
+import { productCategories } from "@/lib/products"
+import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
-import { Slider } from "@/components/ui/slider"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
-export default function ProductFilter() {
-  // Move hooks inside a try-catch to handle server/client mismatch
-  try {
-    const router = useRouter()
-    const searchParams = useSearchParams()
+export function ProductFilter() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const currentCategory = searchParams?.get("category") || ""
+  const currentQuery = searchParams?.get("q") || ""
+  const [selectedCategory, setSelectedCategory] = useState(currentCategory)
+  const [searchQuery, setSearchQuery] = useState(currentQuery)
+  const [inStockOnly, setInStockOnly] = useState(false)
 
-    const categories = [
-      { id: "mechanical", name: "Mechanical Components" },
-      { id: "electrical", name: "Electrical Components" },
-      { id: "testing-equipment", name: "Testing Equipment" },
-      { id: "safety-equipment", name: "Safety Equipment" }
-    ]
+  // Update the selected category when the URL changes
+  useEffect(() => {
+    setSelectedCategory(currentCategory)
+    setSearchQuery(currentQuery)
+  }, [currentCategory, currentQuery])
 
-    const brands = [
-      { id: "brand1", name: "Brand 1" },
-      { id: "brand2", name: "Brand 2" },
-      { id: "brand3", name: "Brand 3" },
-      { id: "brand4", name: "Brand 4" },
-    ]
-
-    const [priceRange, setPriceRange] = useState([0, 1000])
-
-    const handleCategoryChange = (categoryId: string) => {
-      router.push(`/products?category=${categoryId}`)
+  const handleCategoryChange = (category: string) => {
+    // Update URL with selected category
+    const params = new URLSearchParams(searchParams?.toString() || "")
+    
+    if (category) {
+      params.set("category", category)
+    } else {
+      params.delete("category")
     }
-
-    const handleReset = () => {
-      router.push("/products")
-    }
-
-    return (
-      <div className="space-y-6">
-        <div>
-          <h3 className="text-lg font-semibold mb-3">Categories</h3>
-          <div className="space-y-2">
-            {categories.map((category) => (
-              <div key={category.id} className="flex items-center space-x-2">
-                <Checkbox
-                  id={`category-${category.id}`}
-                  checked={searchParams.get("category") === category.id}
-                  onCheckedChange={() => handleCategoryChange(category.id)}
-                />
-                <Label htmlFor={`category-${category.id}`} className="text-sm cursor-pointer">
-                  {category.name}
-                </Label>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-3">Brands</h3>
-          <div className="space-y-2">
-            {brands.map((brand) => (
-              <div key={brand.id} className="flex items-center space-x-2">
-                <Checkbox id={`brand-${brand.id}`} />
-                <Label htmlFor={`brand-${brand.id}`} className="text-sm cursor-pointer">
-                  {brand.name}
-                </Label>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-3">Price Range</h3>
-          <Slider
-            defaultValue={[0, 1000]}
-            max={1000}
-            step={10}
-            value={priceRange}
-            onValueChange={setPriceRange}
-            className="mb-6"
-          />
-          <div className="flex justify-between text-sm">
-            <span>AED {priceRange[0]}</span>
-            <span>AED {priceRange[1]}</span>
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-3">Availability</h3>
-          <div className="space-y-2">
-            <div className="flex items-center space-x-2">
-              <Checkbox id="in-stock" />
-              <Label htmlFor="in-stock" className="text-sm cursor-pointer">
-                In Stock
-              </Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Checkbox id="out-of-stock" />
-              <Label htmlFor="out-of-stock" className="text-sm cursor-pointer">
-                Out of Stock
-              </Label>
-            </div>
-          </div>
-        </div>
-
-        <Button variant="outline" className="w-full" onClick={handleReset}>
-          Reset Filters
-        </Button>
-      </div>
-    )
-  } catch (error) {
-    return null // Handle server-side rendering gracefully
+    
+    router.push(`/products?${params.toString()}`)
   }
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    const params = new URLSearchParams(searchParams?.toString() || "")
+    
+    if (searchQuery.trim()) {
+      params.set("q", searchQuery)
+    } else {
+      params.delete("q")
+    }
+    
+    router.push(`/products?${params.toString()}`)
+  }
+
+  const handleInStockChange = (checked: boolean) => {
+    setInStockOnly(checked)
+    
+    const params = new URLSearchParams(searchParams?.toString() || "")
+    
+    if (checked) {
+      params.set("inStock", "true")
+    } else {
+      params.delete("inStock")
+    }
+    
+    router.push(`/products?${params.toString()}`)
+  }
+
+  return (
+    <div className="space-y-6 bg-gray-50 p-4 rounded-lg">
+      <div>
+        <h2 className="text-xl font-bold mb-4">Filter Products</h2>
+        
+        <form onSubmit={handleSearch} className="mb-6">
+          <div className="flex gap-2">
+            <Input
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="bg-white"
+            />
+            <Button type="submit" variant="default">Search</Button>
+          </div>
+        </form>
+        
+        <Accordion type="single" collapsible defaultValue="categories">
+          <AccordionItem value="categories">
+            <AccordionTrigger className="text-lg font-semibold">Categories</AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-2 mt-2">
+                <div 
+                  className={`cursor-pointer hover:text-blue-600 p-2 rounded transition-colors ${!selectedCategory ? 'font-semibold text-blue-600 bg-blue-50' : ''}`}
+                  onClick={() => handleCategoryChange("")}
+                >
+                  All Products
+                </div>
+                {productCategories.map((category) => (
+                  <div
+                    key={category.id}
+                    className={`cursor-pointer hover:text-blue-600 p-2 rounded transition-colors ${selectedCategory === category.id ? 'font-semibold text-blue-600 bg-blue-50' : ''}`}
+                    onClick={() => handleCategoryChange(category.id)}
+                  >
+                    {category.name}
+                  </div>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+          
+          <AccordionItem value="availability">
+            <AccordionTrigger className="text-lg font-semibold">Availability</AccordionTrigger>
+            <AccordionContent>
+              <div className="flex items-center space-x-2 mt-2">
+                <Checkbox 
+                  id="inStock" 
+                  checked={inStockOnly}
+                  onCheckedChange={(checked) => handleInStockChange(checked as boolean)}
+                />
+                <label
+                  htmlFor="inStock"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  In Stock Only
+                </label>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
+    </div>
+  )
 }

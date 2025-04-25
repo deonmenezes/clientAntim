@@ -2,7 +2,8 @@
 
 import { Suspense } from "react"
 import ProductGrid from "./product-grid"
-import ProductFilter from "./product-filter"
+import ProductGrid2 from "./product-grid2"  // Import the new ProductGrid2 component
+import { ProductFilter } from "./product-filter"
 import { Skeleton } from "@/components/ui/skeleton"
 
 function ProductGridSkeleton() {
@@ -38,7 +39,10 @@ export default function ProductsClient() {
       </div>
       <div className="w-full md:w-3/4">
         <Suspense fallback={<ProductGridSkeleton />}>
-          <ProductGrid />
+          <div className="space-y-12">
+            {/* Replace ProductGrid with ProductGrid2 */}
+            <ProductGrid2 />
+          </div>
         </Suspense>
       </div>
     </div>
